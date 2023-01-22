@@ -17,7 +17,7 @@
       };
       efi.canTouchEfiVariables = true;
     };
-  }
+  };
 
   # fileSystems."/" =
   #   { device = "/dev/disk/by-uuid/f10fd9f8-b326-4a35-966c-2c7a8ee21b22";
@@ -44,11 +44,10 @@
   #     device = "/dev/disk/by-label/ESP";
   #     fsType = "vfat";
   #   };
-  };
 
-  networking.useDHCP = lib.mkDefault true;
+  networking.useDHCP = true;
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  # hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  nixpkgs.hostPlatform = "x86_64-linux";
+  # hardware.cpu.amd.updateMicrocode = true;
+  hardware.cpu.intel.updateMicrocode = true;
 }

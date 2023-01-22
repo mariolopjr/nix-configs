@@ -29,6 +29,8 @@
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     in
     rec {
+      nixosModules = import ./modules/nixos;
+
       devShells = forAllSystems (system: {
         default = nixpkgs.legacyPackages.${system}.callPackage ./shell.nix { };
       });
