@@ -9,11 +9,7 @@
     # epiphany # web browser
     geary # email reader
     gnome-characters
-    # tali # poker game
-    # iagno # go game
-    # hitori # sudoku game
-    # atomix # puzzle game
-    yelp # Help view
+    yelp # help view
     gnome-contacts
     gnome-initial-setup
   ]);
@@ -32,7 +28,7 @@
     geoclue2.enable = true;
     gnome.games.enable = false;
   };
-  # Fix broken stuff
+  # fix broken stuff
   services.avahi.enable = false;
   networking.networkmanager.enable = false;
 }
