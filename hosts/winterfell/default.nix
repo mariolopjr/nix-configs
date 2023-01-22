@@ -52,7 +52,7 @@
   environment.systemPackages = with pkgs; [ virt-manager ];
 
   # necessary for libvirtd
-  security.polkit.enable = true
+  security.polkit.enable = true;
 
   system.stateVersion = "22.11";
 }
