@@ -10,7 +10,7 @@
   services.openssh = {
     enable = true;
     # passwordAuthentication = false;
-    permitRootLogin = "no";
+    settings.PermitRootLogin = "no";
     # automatically remove stale sockets
     extraConfig = ''
       StreamLocalBindUnlink yes
