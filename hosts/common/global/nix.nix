@@ -1,0 +1,31 @@
+{ pkgs, inputs, lib, config, ... }:
+{
+  nix = {
+    settings = {
+      substituters = [
+        "https://nix-community.cachix.org"
+      ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+      trusted-users = [ "root" "@wheel" ];
+      auto-optimise-store = lib.mkDefault true;
+      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      warn-dirty = false;
+      system-features = [ "kvm" "big-parallel" ];
+    };
+    package = pkgs.nixUnstable;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+    };
+
+    # add each flake input as a registry
+    # to make nix3 commands consistent with the flake
+    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+
+    # map registries to channels
+    # very useful when using legacy commands
+    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+  };
+}
