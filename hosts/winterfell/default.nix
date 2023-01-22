@@ -1,9 +1,9 @@
 # system configuration for desktop
 { pkgs, inputs, ... }: {
   imports = [
-    inputs.hardware.nixosModules.common-cpu-amd
+    # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-gpu-nvidia
-    inputs.hardware.nixosModules.common-pc-ssd
+    # inputs.hardware.nixosModules.common-pc-ssd
 
     ./hardware-configuration.nix
 
@@ -50,6 +50,9 @@
     enable = true;
   };
   environment.systemPackages = with pkgs; [ virt-manager ];
+
+  # necessary for libvirtd
+  security.polkit.enable = true
 
   system.stateVersion = "22.11";
 }
