@@ -32,6 +32,7 @@
     in
     rec {
       nixosModules = import ./modules/nixos;
+      homeManagerModules = import ./modules/home-manager;
 
       devShells = forAllSystems (system: {
         default = nixpkgs.legacyPackages.${system}.callPackage ./shell.nix { };
