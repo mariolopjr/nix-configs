@@ -46,9 +46,14 @@
         # desktop
         winterfell = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/winterfell disko.nixosModules.disko ];
+          modules = [
+            ./hosts/winterfell
+            imports = [
+              disko.nixosModules.disko
+            ];
+          ];
 
-          disko.devices = import ./disk-config.nix {
+          disko.devices = import ./hosts/winterfell/disk-config.nix {
             lib = nixpkgs.lib;
           };
         };
