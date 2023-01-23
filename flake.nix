@@ -21,7 +21,7 @@
     firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
   };
 
-  outputs = { self, nixpkgs, home-manager, deploy-rs, disko, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, deploy-rs, ... }@inputs:
     let
       inherit (nixpkgs.lib) filterAttrs;
       inherit (builtins) mapAttrs elem;
