@@ -4,12 +4,10 @@
     gnome-photos
     gnome-tour
   ]) ++ (with pkgs.gnome; [
-    cheese # webcam tool
-    # gedit # text editor
-    # epiphany # web browser
-    geary # email reader
+    cheese
+    geary
     gnome-characters
-    yelp # help view
+    yelp
     gnome-contacts
     gnome-initial-setup
   ]);

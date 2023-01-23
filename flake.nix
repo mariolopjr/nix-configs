@@ -6,6 +6,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:nixos/nixos-hardware";
 
+    disko = {
+      url = github:nix-community/disko;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     impermanence.url = "github:nix-community/impermanence";
     nix-colors.url = "github:misterio77/nix-colors";
     sops-nix.url = "github:mic92/sops-nix";
@@ -21,7 +26,7 @@
     firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
   };
 
-  outputs = { self, nixpkgs, home-manager, deploy-rs, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, deploy-rs, disko, ... }@inputs:
     let
       inherit (nixpkgs.lib) filterAttrs;
       inherit (builtins) mapAttrs elem;
@@ -37,11 +42,20 @@
         default = nixpkgs.legacyPackages.${system}.callPackage ./shell.nix { };
       });
 
-      nixosConfigurations = rec {
+      nixosConfigurations = {
         # desktop
         winterfell = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = { inherit inputs disko outputs; };
           modules = [ ./hosts/winterfell ];
+        };
+      };
+
+      homeConfigurations = {
+        # desktop
+        "snow@winterfell" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [ ./home/snow/winterfell.nix ];
         };
       };
 
