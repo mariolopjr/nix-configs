@@ -1,11 +1,9 @@
 # system configuration for desktop
-{ pkgs, inputs, nixpkgs, disko, ... }: {
+{ pkgs, inputs, ... }: {
   imports = [
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-gpu-nvidia
     # inputs.hardware.nixosModules.common-pc-ssd
-
-    disko.nixosModules.disko
 
     ./hardware-configuration.nix
 
@@ -24,10 +22,6 @@
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-  };
-
-  disko.devices = import ./disk-config.nix {
-    lib = nixpkgs.lib;
   };
 
   programs = {
