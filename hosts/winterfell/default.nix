@@ -1,5 +1,5 @@
 # system configuration for desktop
-{ pkgs, inputs, disko, ... }: {
+{ pkgs, inputs, nixpkgs, disko, ... }: {
   imports = [
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-gpu-nvidia
