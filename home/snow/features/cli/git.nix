@@ -3,7 +3,6 @@ let
   ssh = "${pkgs.openssh}/bin/ssh";
 in
 {
-  home.packages = [ git ];
   programs.git = {
     enable = true;
     package = pkgs.gitAndTools.gitFull;
