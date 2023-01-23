@@ -10,6 +10,8 @@
     nix-colors.url = "github:misterio77/nix-colors";
     sops-nix.url = "github:mic92/sops-nix";
 
+    deploy-rs.url = "github:serokell/deploy-rs";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,7 +21,7 @@
     firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, deploy-rs, ... }@inputs:
     let
       inherit (nixpkgs.lib) filterAttrs;
       inherit (builtins) mapAttrs elem;
@@ -42,6 +44,13 @@
           modules = [ ./hosts/winterfell ];
         };
       };
+
+      deploy.nodes.winterfell.profiles.system = {
+        user = "root";
+        path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.winterfell;
+      };
+
+      checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
       nixConfig = {
         extra-substituters = [
