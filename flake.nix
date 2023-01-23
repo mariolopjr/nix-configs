@@ -6,11 +6,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:nixos/nixos-hardware";
 
-    disko = {
-      url = github:nix-community/disko;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     impermanence.url = "github:nix-community/impermanence";
     nix-colors.url = "github:misterio77/nix-colors";
     sops-nix.url = "github:mic92/sops-nix";
@@ -46,16 +41,7 @@
         # desktop
         winterfell = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          modules = [
-            ./hosts/winterfell
-            imports = [
-              disko.nixosModules.disko
-            ];
-          ];
-
-          disko.devices = import ./hosts/winterfell/disk-config.nix {
-            lib = nixpkgs.lib;
-          };
+          modules = [ ./hosts/winterfell ];
         };
       };
 
