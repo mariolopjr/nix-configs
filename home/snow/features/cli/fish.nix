@@ -32,6 +32,8 @@
     shellAliases = {
       # Get ip
       getip = "curl ifconfig.me";
+      # SSH with kitty terminfo
+      kssh = "kitty +kitten ssh";
       # Clear screen and scrollback
       clear = "printf '\\033[2J\\033[3J\\033[1;1H'";
     };
@@ -43,6 +45,13 @@
       # Open command buffer in vim when alt+e is pressed
       ''
         bind \ee edit_command_buffer
+      '' +
+      # kitty integration
+      ''
+        set --global KITTY_INSTALLATION_DIR "${pkgs.kitty}/lib/kitty"
+        set --global KITTY_SHELL_INTEGRATION enabled
+        source "$KITTY_INSTALLATION_DIR/shell-integration/fish/vendor_conf.d/kitty-shell-integration.fish"
+        set --prepend fish_complete_path "$KITTY_INSTALLATION_DIR/shell-integration/fish/vendor_completions.d"
       '' +
       # Use vim bindings and cursors
       ''
