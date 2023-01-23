@@ -1,2 +1,3 @@
 {
+    shellcolor = import ./shellcolor.nix;
 }
