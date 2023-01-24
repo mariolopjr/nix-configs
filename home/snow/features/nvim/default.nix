@@ -4,7 +4,7 @@
     packages = with pkgs; [ neovim ];
     sessionVariables.EDITOR = "nvim";
     file."./.config/nvim/" = {
-      source = ./config/;
+      source = ./config;
       recursive = true;
       onChange = ''
         XDG_RUNTIME_DIR=''${XDG_RUNTIME_DIR:-/run/user/$(id -u)}
@@ -13,7 +13,5 @@
         done
       '';
     }
-   };
-  }
-
-  xdg.configFile."nvim/init.lua".
+  };
+}
