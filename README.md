@@ -13,7 +13,7 @@
 | **DM:**        | gnome                                                    |
 | **WM:**        | gnome                                                    |
 | **Editor:**    | neovim                                                   |
-| **Terminal:**  | wezterm                                                  |
+| **Terminal:**  | kitty                                                    |
 | **Launcher:**  |                                                          |
 | **Browser:**   | firefox                                                  |
 | **GTK Theme:** | [Node](https://github.com/Nord)                          |
