@@ -12,6 +12,6 @@
         nvim --server $server --remote-send ':source $MYVIMRC<CR>' &
         done
       '';
-    }
+    };
   };
 }
