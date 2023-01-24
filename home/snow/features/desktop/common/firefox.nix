@@ -14,7 +14,7 @@ in
     };
     extensions = with addons; [
       ublock-origin
-      onepassword-password-manager
+      # onepassword-password-manager
       vimium
     ];
     profiles.snow = {
