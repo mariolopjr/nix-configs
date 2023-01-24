@@ -1,1 +1,3 @@
-{ pkgs ? null }: { }
+{ pkgs ? null }: {
+    shellcolord = pkgs.callPackage ./shellcolord { };
+}
