@@ -30,7 +30,7 @@ in
 #     neededForUsers = true;
 #   };
 
-#   home-manager.users.snow = import home/${config.networking.hostName}.nix;
+  home-manager.users.snow = import home/${config.networking.hostName}.nix;
 
   services.geoclue2.enable = true;
 }

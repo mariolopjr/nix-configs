@@ -42,23 +42,19 @@
    # faster to use nix-shell than nix shell --experimental-bullshit blah
    nix-shell -p git nixFlakes
 
-   # xet HOST to the desired hostname of this system
-   HOST=...
-   # xet USER to your desired username
-   USER=...
-
    git clone https://github.com/mariolopjr/nix-configs /etc/dotfiles
    cd /etc/dotfiles
 
    # install nixOS
-   nixos-install --root /mnt --flake .#$HOST
-
-   # nix-shell to perform home manager config
-   nix-shell
-   home-manager --flake .#$USER@$HOST switch
+   nixos-install --root /mnt --flake .#<HOST>
 
    # Then move the dotfiles to the mounted drive!
-   mv /etc/dotfiles /mnt/etc/dotfiles
+   mv /etc/dotfiles /mnt/persist/dotfiles
+
+   # nixos-enter to chroot into install and nix-shell to perform home manager config
+   nixos-enter
+   nix-shell
+   home-manager --flake .#<USER@HOST> switch
    ```
 
 6. Then reboot and you're good to go!
