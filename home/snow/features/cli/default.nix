@@ -4,7 +4,6 @@
     ./bat.nix
     ./fish.nix
     ./git.nix
-    ./shellcolor.nix
     ./ssh.nix
   ];
   home.packages = with pkgs; [
