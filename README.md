@@ -52,6 +52,13 @@
    # Then move the dotfiles to the mounted drive!
    cd ..
    mv /etc/dotfiles /mnt/persist/dotfiles
+
+   # nixos-enter to chroot into install and set password (for now)
+   nixos-enter
+   passwd <USER>
+   mkdir -p /persist/home/<USER>
+   chown -R <USER>:users /persist/home/<USER>
+   chmod -R 700 /persist/home/<USER>
    ```
 
 6. Reboot and you're good to go!
