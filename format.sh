@@ -48,10 +48,10 @@ parted -s "$DISK" \
     mklabel gpt \
     mkpart ESP fat32 1MiB 513MiB \
     set 1 esp on \
-    mkpart cryptroot 513MiB 100% \
+    mkpart winterfell 513MiB 100% \
 
 ESP="/dev/disk/by-partlabel/ESP"
-CRYPTROOT="/dev/disk/by-partlabel/cryptroot"
+CRYPTROOT="/dev/disk/by-partlabel/winterfell"
 
 # Informing the Kernel of the changes
 print "Informing the Kernel about the disk changes."

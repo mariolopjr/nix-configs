@@ -20,7 +20,7 @@
         enable = true;
         autoSuspend = false;
         wayland = true;
-        # nvidiaWayland = true;
+        nvidiaWayland = true;
       };
     };
     geoclue2.enable = true;

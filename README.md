@@ -35,26 +35,23 @@
 
 3. Switch to root user: `sudo su -`
 
-4. Do your partitions and mount your root to `/mnt`. Since I want impermeance, you can use my setup of UEFI boot + LUKS2 + btrfs, see `format.sh`
-
-5. Install these dotfiles:
+4. Format and install these dotfiles:
    ```sh
    # faster to use nix-shell than nix shell --experimental-bullshit blah
    nix-shell -p git nixFlakes
 
-   git clone https://github.com/mariolopjr/nix-configs /etc/dotfiles
-   cd /etc/dotfiles
+   git clone https://github.com/mariolopjr/nix-configs /etc/dotfiles && cd $_
+
+   # Do your partitions and mount your root to `/mnt`. Since I want impermeance, you can use my setup of UEFI boot + LUKS2 + btrfs
+   ./format.sh
 
    # install nixOS
    nixos-install --root /mnt --flake .#<HOST>
+   exit
 
    # Then move the dotfiles to the mounted drive!
+   cd ..
    mv /etc/dotfiles /mnt/persist/dotfiles
-
-   # nixos-enter to chroot into install and nix-shell to perform home manager config
-   nixos-enter
-   nix-shell
-   home-manager --flake .#<USER@HOST> switch
    ```
 
-6. Then reboot and you're good to go!
+6. Reboot and you're good to go!

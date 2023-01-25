@@ -38,10 +38,10 @@
   };
 
   hardware = {
-    # nvidia = {
-    #   package = config.boot.kernelPackages.nvidiaPackages.stable;
-    #   modesetting.enable = true;
-    # };
+    nvidia = {
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      modesetting.enable = true;
+    };
     opengl.enable = true;
     openrgb.enable = true;
   };
