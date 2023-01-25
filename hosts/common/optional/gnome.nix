@@ -1,6 +1,6 @@
+{ pkgs, ... }:
 {
   environment.gnome.excludePackages = (with pkgs; [
-    gnome-music
     gnome-photos
     gnome-tour
   ]) ++ (with pkgs.gnome; [
@@ -13,14 +13,16 @@
   ]);
   services = {
     xserver = {
+      enable = true;
       desktopManager.gnome = {
         enable = true;
       };
       displayManager.gdm = {
         enable = true;
         autoSuspend = false;
-        wayland = true;
-        nvidiaWayland = true;
+        # disable wayland for now
+        # wayland = true;
+        # nvidiaWayland = true;
       };
     };
     geoclue2.enable = true;

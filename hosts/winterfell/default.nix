@@ -9,6 +9,8 @@
 
     ../common/global
     ../common/users/snow
+
+    ../common/optional/gnome.nix
   ];
 
   # environment.persistence.enable = true;

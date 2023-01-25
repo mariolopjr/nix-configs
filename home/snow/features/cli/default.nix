@@ -20,6 +20,9 @@
     curl
     jq
 
+    # build
+    clang-tools
+
     # lsp
     nil
     ltex-ls
