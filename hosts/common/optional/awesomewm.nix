@@ -17,7 +17,7 @@
         luarocks
         luadbi-mysql
       ];
-    }
+    };
   };
   # fix broken stuff
   services.avahi.enable = false;
