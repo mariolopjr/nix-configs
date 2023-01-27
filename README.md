@@ -16,7 +16,7 @@
 | **Terminal:**  | kitty                                                    |
 | **Launcher:**  |                                                          |
 | **Browser:**   | firefox                                                  |
-| **GTK Theme:** | [Node](https://github.com/Nord)                          |
+| **GTK Theme:** | [Node](https://github.com/catppuccin)                          |
 
 -----
 
@@ -46,7 +46,7 @@
    ./format.sh
 
    # install nixOS
-   nixos-install --root /mnt --flake .#<HOST>
+   nixos-install --no-root-passwd --root /mnt --flake .#<HOST>
    exit
 
    # Then move the dotfiles to the mounted drive!
@@ -55,10 +55,12 @@
 
    # nixos-enter to chroot into install and set password (for now)
    nixos-enter
-   passwd <USER>
-   mkdir -p /persist/home/<USER>
-   chown -R <USER>:users /persist/home/<USER>
-   chmod -R 700 /persist/home/<USER>
+   export USER=<user>
+   passwd $USER
+   mkdir -p /persist/home/$USER
+   chown -R $USER:users /persist/home/$USER
+   chmod -R 700 /persist/home/$USER
+   exit
    ```
 
 6. Reboot and you're good to go!

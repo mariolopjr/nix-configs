@@ -1,5 +1,5 @@
 # system configuration for desktop
-{ pkgs, inputs, ... }: {
+{ stdenv, config, pkgs, inputs, ... }: {
   imports = [
     inputs.hardware.nixosModules.common-cpu-amd
     inputs.hardware.nixosModules.common-gpu-nvidia
@@ -10,10 +10,8 @@
     ../common/global
     ../common/users/snow
 
-    ../common/optional/gnome.nix
+    ../common/optional/awesomewm.nix
   ];
-
-  # environment.persistence.enable = true;
 
   networking = {
     hostName = "winterfell";
@@ -29,6 +27,9 @@
   programs = {
     dconf.enable = true;
   };
+
+  # set clang as the default compiler
+  stdenv = pkgs.clangStdenv;
 
   services = {
     dbus.packages = [ pkgs.gcr ];

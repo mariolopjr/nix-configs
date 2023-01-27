@@ -52,6 +52,6 @@ in
     };
   };
 
-  colorscheme = lib.mkDefault colorSchemes.nord;
+  colorscheme = lib.mkDefault colorSchemes.catppuccin;
   home.file.".colorscheme".text = config.colorscheme.slug;
 }

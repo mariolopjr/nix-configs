@@ -1,9 +1,9 @@
 { inputs, pkgs, ... }: {
   imports = [
     ./global
-    ./features/desktop/gnome
+    ./features/desktop/awesomewm
+    ./features/desktop/common/rofi.nix
   ];
 
-#   wallpaper = (import ./wallpapers).aenami-bright-planet;
-  colorscheme = inputs.nix-colors.colorSchemes.nord;
+  colorscheme = inputs.nix-colors.colorSchemes.catppuccin;
 }
