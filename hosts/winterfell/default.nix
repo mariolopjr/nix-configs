@@ -1,5 +1,5 @@
 # system configuration for desktop
-{ stdenv, config, pkgs, inputs, ... }: {
+{ config, pkgs, inputs, ... }: {
   imports = [
     inputs.hardware.nixosModules.common-cpu-amd
     inputs.hardware.nixosModules.common-gpu-nvidia
@@ -27,9 +27,6 @@
   programs = {
     dconf.enable = true;
   };
-
-  # set clang as the default compiler
-  stdenv = pkgs.clangStdenv;
 
   services = {
     dbus.packages = [ pkgs.gcr ];
