@@ -6,6 +6,22 @@ in
   programs.git = {
     enable = true;
     package = pkgs.gitAndTools.gitFull;
+    aliases = {
+      pushall = "!git remote | xargs -L1 git push --all";
+      graph = "log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order";
+      add-nowhitespace = "!git diff -U0 -w --no-color | git apply --cached --ignore-whitespace --unidiff-zero -";
+      branches = "branch -a";
+      tags = "tag";
+      stashes = "stash list";
+      unstage = "reset -q HEAD --";
+      discard = "checkout --";
+      uncommit = "reset --mixed HEAD~";
+      amend = "commit --amend";
+      nevermind = "!git reset --hard HEAD && git clean -d -f";
+      precommit = "diff --cached --diff-algorithm=minimal -w";
+      unmerged = "diff --name-only --diff-filter=U";
+      remotes = "remote -v";
+    };
     userName = "Mario Lopez";
     userEmail = "mario@techmunchies.net";
     extraConfig = {
