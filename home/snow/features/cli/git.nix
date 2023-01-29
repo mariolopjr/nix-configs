@@ -27,12 +27,11 @@ in
     extraConfig = {
       feature.manyFiles = true;
       init.defaultBranch = "main";
+      gpg.format = "ssh";
+      user.signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILLW/ZvXc3A4Y1RXENFhlgWgMHZJjJZhshg7+8yDBM2B";
+      commit.gpgsign = true;
     };
     lfs = { enable = true; };
     ignores = [ ".direnv" "result" ];
-    signing = {
-      signByDefault = true;
-      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILLW/ZvXc3A4Y1RXENFhlgWgMHZJjJZhshg7+8yDBM2B";
-    };
   };
 }

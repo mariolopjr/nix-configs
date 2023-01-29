@@ -32,6 +32,11 @@
   hardware.enableRedistributableFirmware = true;
   networking.domain = "home.techmunchies.net";
 
+  # decrease service timeout during bootup
+  systemd.extraConfig = ''
+    DefaultTimeoutStopSec=10s
+  '';
+
   # increase open file limit for sudoers
   security.pam.loginLimits = [
     {

@@ -22,4 +22,5 @@
 
   nixpkgs.hostPlatform = "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = true;
+  hardware.video.hidpi.enable = true;
 }

@@ -2,7 +2,7 @@
 { config, pkgs, inputs, ... }: {
   imports = [
     inputs.hardware.nixosModules.common-cpu-amd
-    inputs.hardware.nixosModules.common-gpu-nvidia
+    inputs.hardware.nixosModules.common-gpu-nvidia-nonprime
     inputs.hardware.nixosModules.common-pc-ssd
 
     ./hardware-configuration.nix
@@ -10,12 +10,13 @@
     ../common/global
     ../common/users/snow
 
-    ../common/optional/awesomewm.nix
+    ../common/optional/kde.nix
+    ../common/optional/quietboot.nix
   ];
 
   networking = {
     hostName = "winterfell";
-    interfaces.enp0s1 = {
+    interfaces.enp7s0 = {
       wakeOnLan.enable = true;
     };
   };

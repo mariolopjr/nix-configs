@@ -10,6 +10,7 @@
 
     windowManager.awesome = {
       enable = true;
+      package = pkgs.awesome.override { lua = pkgs.luajit; };
       luaModules = with pkgs.luaPackages; [
         ldbus
         lgi

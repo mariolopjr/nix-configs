@@ -1,9 +1,10 @@
 { inputs, pkgs, ... }: {
   imports = [
     ./global
-    ./features/desktop/awesomewm
-    ./features/desktop/common/rofi.nix
+    ./features/desktop/kde
+    ./features/games/default.nix
   ];
 
+  home.file."./.local/wallpapers/".source = ./wallpapers;
   colorscheme = inputs.nix-colors.colorSchemes.catppuccin;
 }
