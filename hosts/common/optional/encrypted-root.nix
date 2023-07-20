@@ -1,7 +1,5 @@
-{ config, ... }:
-let hostname = config.networking.hostName;
-in {
+{ config, ... }: {
   boot.initrd ={
-    luks.devices."${hostname}_crypt".device = "/dev/disk/by-partlabel/${hostname}";
+    luks.devices.cryptroot.device = "/dev/disk/by-partlabel/disk-nvme-luks";
   };
 }
