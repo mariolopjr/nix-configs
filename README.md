@@ -10,10 +10,10 @@
 |                |                                                          |
 |----------------|----------------------------------------------------------|
 | **Shell:**     | fish + tide                                              |
-| **DM:**        | gnome                                                    |
-| **WM:**        | gnome                                                    |
+| **DM:**        | kde                                                    |
+| **WM:**        | kde                                                    |
 | **Editor:**    | neovim                                                   |
-| **Terminal:**  | kitty                                                    |
+| **Terminal:**  | konsole                                                    |
 | **Launcher:**  |                                                          |
 | **Browser:**   | firefox                                                  |
 | **GTK Theme:** | [Node](https://github.com/catppuccin)                          |
@@ -44,8 +44,8 @@
 
    git clone https://github.com/mariolopjr/nix-configs /etc/dotfiles && cd $_
 
-   # Do your partitions and mount your root to `/mnt`. Since I want impermeance, you can use my setup of UEFI boot + LUKS2 + btrfs
-   nix run github:nix-community/disko -- --m disko ./hosts/common/optional/btrfs-optin-persistence.nix <disk>
+   # Do your partitions and mount your root to `/mnt`.
+   nix run github:nix-community/disko -- --m disko ./hosts/common/optional/btrfs-optin-persistence.nix
 
    # install nixOS
    nixos-install --no-root-passwd --root /mnt --flake .#<HOST>
@@ -65,4 +65,4 @@
    exit
    ```
 
-6. Reboot and you're good to go!
+5. Reboot and you're good to go!

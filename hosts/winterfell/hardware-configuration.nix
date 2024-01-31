@@ -1,6 +1,6 @@
 {
   imports = [
-    ../common/optional/btrfs-optin-persistence.nix
+    ../common/optional/disks.nix
   ];
 
   boot = {
@@ -16,7 +16,7 @@
       efi.canTouchEfiVariables = true;
     };
   };
-  disks = [ "/dev/nvme0n1" ];
+  rootDisk = "/dev/nvme0n1";
 
   networking.useDHCP = true;
 
