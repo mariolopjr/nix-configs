@@ -28,7 +28,7 @@ in
 
   disko.devices.disk.nvme = {
     type = "disk";
-    device = builtins.elemAt disks 0;
+    device = builtins.elemAt config.disks 0;
     content = {
       type = "gpt";
       partitions = {
