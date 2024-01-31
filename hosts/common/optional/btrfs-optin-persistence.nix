@@ -29,6 +29,9 @@ in
     # Use postDeviceCommands if on old phase 1
     # boot.initrd.postDeviceCommands = lib.mkBefore wipeScript;
 
+    # persisted filesystems
+    fileSystems."/persist".neededForBoot = true;
+
     disko.devices.disk.nvme = {
       type = "disk";
       device = builtins.elemAt config.disks 0;

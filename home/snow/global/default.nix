@@ -37,7 +37,7 @@ in
   home = {
     username = lib.mkDefault "snow";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
-    stateVersion = lib.mkDefault "23.11";
+    stateVersion = lib.mkDefault "23.05";
 
     persistence = {
       "/persist/home/snow" = {
