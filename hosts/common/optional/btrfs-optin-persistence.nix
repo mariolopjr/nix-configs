@@ -21,7 +21,7 @@ in
 {
   options.disks = lib.mkOption {
     type = lib.types.listOf lib.types.str;
-    default = [ "/dev/sda" ];
+    default = [ "/dev/nvme0n1" ];
   };
   # Use postDeviceCommands if on old phase 1
 #   boot.initrd.postDeviceCommands = lib.mkBefore wipeScript;
