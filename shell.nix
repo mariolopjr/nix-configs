@@ -15,9 +15,5 @@
     nix
     home-manager
     git
-
-    sops
-    gnupg
-    age
   ];
 }
