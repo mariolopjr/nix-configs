@@ -9,7 +9,10 @@
     impermanence.url = "github:nix-community/impermanence";
     nix-colors.url = "github:misterio77/nix-colors";
 
-    disko.url = "github:nix-community/disko";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -20,7 +23,7 @@
     firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, disko, home-manager, ... }:
     let
       inherit (nixpkgs.lib) filterAttrs;
       inherit (builtins) mapAttrs elem;
@@ -45,7 +48,10 @@
         # desktop
         winterfell = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/winterfell ];
+          modules = [
+            ./hosts/winterfell
+            disko.nixosModules.disko
+          ];
         };
       };
 
