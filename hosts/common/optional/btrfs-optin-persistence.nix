@@ -23,46 +23,49 @@ in
     type = lib.types.listOf lib.types.str;
     default = [ "/dev/nvme0n1" ];
   };
-  # Use postDeviceCommands if on old phase 1
-#   boot.initrd.postDeviceCommands = lib.mkBefore wipeScript;
 
-  disko.devices.disk.nvme = {
-    type = "disk";
-    device = builtins.elemAt config.disks 0;
-    content = {
-      type = "gpt";
-      partitions = {
-        esp = {
-          priority = 1;
-          name = "ESP";
-          start = "1MiB";
-          end = "513MiB";
-          content = {
-            type = "filesystem";
-            format = "vfat";
-            mountpoint = "/boot";
-          };
-        };
-        luks = {
-          name = "luks";
-          size = "100%";
-          content = {
-            type = "luks";
-            name = "cryptroot";
+  config = {
+    # Use postDeviceCommands if on old phase 1
+    # boot.initrd.postDeviceCommands = lib.mkBefore wipeScript;
+
+    disko.devices.disk.nvme = {
+      type = "disk";
+      device = builtins.elemAt config.disks 0;
+      content = {
+        type = "gpt";
+        partitions = {
+          esp = {
+            priority = 1;
+            name = "ESP";
+            start = "1MiB";
+            end = "513MiB";
             content = {
-              type = "btrfs";
-              subvolumes = {
-                "@root" = {
-                  mountpoint = "/";
-                  mountOptions = [ "compress=zstd" "ssd" "noatime" "discard=async" ];
-                };
-                "@nix" = {
-                  mountpoint = "/nix";
-                  mountOptions = [ "compress=zstd" "ssd" "noatime" "discard=async" ];
-                };
-                "@persist" = {
-                  mountpoint = "/persist";
-                  mountOptions = [ "compress=zstd" "ssd" "noatime" "discard=async" ];
+              type = "filesystem";
+              format = "vfat";
+              mountpoint = "/boot";
+            };
+          };
+          luks = {
+            name = "luks";
+            size = "100%";
+            content = {
+              type = "luks";
+              name = "cryptroot";
+              content = {
+                type = "btrfs";
+                subvolumes = {
+                  "@root" = {
+                    mountpoint = "/";
+                    mountOptions = [ "compress=zstd" "ssd" "noatime" "discard=async" ];
+                  };
+                  "@nix" = {
+                    mountpoint = "/nix";
+                    mountOptions = [ "compress=zstd" "ssd" "noatime" "discard=async" ];
+                  };
+                  "@persist" = {
+                    mountpoint = "/persist";
+                    mountOptions = [ "compress=zstd" "ssd" "noatime" "discard=async" ];
+                  };
                 };
               };
             };
