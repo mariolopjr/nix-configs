@@ -1,4 +1,5 @@
 { lib, config, ... }:
+with lib;
 let
   wipeScript = ''
     mkdir -p /btrfs
@@ -19,8 +20,8 @@ let
   '';
 in
 {
-  options.disks = lib.mkOption {
-    type = lib.types.listOf lib.types.str;
+  options.disks = mkOption {
+    type = types.listOf types.str;
     default = [ "/dev/nvme0n1" ];
   };
 

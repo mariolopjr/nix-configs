@@ -16,7 +16,7 @@
       efi.canTouchEfiVariables = true;
     };
   };
-  btrfs-optin-persistence.disks = [ "/dev/nvme0n1" ];
+  disks = [ "/dev/nvme0n1" ];
 
   networking.useDHCP = true;
 
