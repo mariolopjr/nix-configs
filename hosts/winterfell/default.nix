@@ -1,7 +1,7 @@
 # system configuration for desktop
 { config, pkgs, inputs, ... }: {
   imports = [
-    inputs.hardware.nixosModules.common-cpu-amd
+    inputs.hardware.nixosModules.common-cpu-intel
     inputs.hardware.nixosModules.common-gpu-nvidia-nonprime
     inputs.hardware.nixosModules.common-pc-ssd
 
@@ -55,5 +55,5 @@
   # necessary for libvirtd
   security.polkit.enable = true;
 
-  system.stateVersion = "22.11";
+  system.stateVersion = "23.11";
 }

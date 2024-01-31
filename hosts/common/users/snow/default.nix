@@ -21,14 +21,8 @@ in
     # openssh.authorizedKeys.keys = [
     #   ""
     # ];
-    # passwordFile = config.sops.secrets.snow-password.path;
     packages = [ pkgs.home-manager ];
   };
-
-#   sops.secrets.snow-password = {
-#     sopsFile = ../../secrets.yaml;
-#     neededForUsers = true;
-#   };
 
   home-manager.users.snow = import home/${config.networking.hostName}.nix;
 
