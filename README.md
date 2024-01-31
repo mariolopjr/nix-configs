@@ -23,6 +23,7 @@
 ## Quick start
 
 1. Acquire NixOS 22.11 or newer:
+
    ```sh
    # nixos-unstable
    wget -O nixos.iso https://channels.nixos.org/nixos-unstable/latest-nixos-minimal-x86_64-linux.iso
@@ -36,6 +37,7 @@
 3. Switch to root user: `sudo su -`
 
 4. Format and install these dotfiles:
+
    ```sh
    # faster to use nix-shell than nix shell --experimental-bullshit blah
    nix-shell -p git nixFlakes
@@ -43,7 +45,7 @@
    git clone https://github.com/mariolopjr/nix-configs /etc/dotfiles && cd $_
 
    # Do your partitions and mount your root to `/mnt`. Since I want impermeance, you can use my setup of UEFI boot + LUKS2 + btrfs
-   ./format.sh
+   nix run github:nix-community/disko -- --m disko ./hosts/common/optional/btrfs-optin-persistence.nix <disk>
 
    # install nixOS
    nixos-install --no-root-passwd --root /mnt --flake .#<HOST>

@@ -1,7 +1,6 @@
 {
   imports = [
     ../common/optional/btrfs-optin-persistence.nix
-    ../common/optional/encrypted-root.nix
   ];
 
   boot = {

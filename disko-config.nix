@@ -24,6 +24,7 @@
             name = "cryptroot";
             content = {
               type = "btrfs";
+              name = "system"
               subvolumes = {
                 "@root" = {
                   mountpoint = "/";

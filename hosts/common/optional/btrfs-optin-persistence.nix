@@ -19,14 +19,16 @@ let
   '';
 in
 {
-  boot.initrd.supportedFilesystems = [ "btrfs" ];
-
+  options.disks = lib.mkOption {
+    type = lib.types.listOf lib.types.str;
+    default = [ "/dev/sda" ];
+  };
   # Use postDeviceCommands if on old phase 1
 #   boot.initrd.postDeviceCommands = lib.mkBefore wipeScript;
 
   disko.devices.disk.nvme = {
     type = "disk";
-    device = "/dev/nvme0n1";
+    device = builtins.elemAt disks 0;
     content = {
       type = "gpt";
       partitions = {
@@ -69,6 +71,4 @@ in
       };
     };
   };
-
-  swapDevices = [ ];
 }
